@@ -52,7 +52,7 @@ _replied_notification_ids = set()
 
 def _generate_dynamic_reply(sender, message):
     if not _GENAI_AVAILABLE:
-        return f"Hello, I am Jarvis, Deepak's AI assistant. He is currently busy. I will inform him that you messaged."
+        return f"Hello, I am Jarvis, RR's AI assistant. He is currently busy. I will inform him that you messaged."
         
     try:
         # Load API key from config
@@ -67,11 +67,11 @@ def _generate_dynamic_reply(sender, message):
         client = genai.Client(api_key=api_key)
         
         prompt = (
-            f"You are Jarvis, Deepak's personal AI assistant. Deepak is currently busy working. "
+            f"You are Jarvis, RR's personal AI assistant. RR is currently busy working. "
             f"You received a WhatsApp message from '{sender}' which says: '{message}'. "
-            f"Write a short, natural, and polite reply on Deepak's behalf. "
+            f"Write a short, natural, and polite reply on RR's behalf. "
             f"Acknowledge what they said. If it is an important update (like a meeting, emergency, or request), "
-            f"tell them you will convey it to Deepak immediately. "
+            f"tell them you will convey it to RR immediately. "
             f"Keep it under 2 sentences. Reply directly as Jarvis."
         )
         
@@ -82,7 +82,7 @@ def _generate_dynamic_reply(sender, message):
         return response.text.strip()
     except Exception as e:
         print(f"[WhatsApp Monitor] AI generation failed: {e}")
-        return f"Hello, I am Jarvis. Deepak is currently busy, but I will convey your message to him."
+        return f"Hello, I am Jarvis. RR is currently busy, but I will convey your message to him."
 
 async def _get_whatsapp_notifications():
     if not _WINSDK_AVAILABLE:
